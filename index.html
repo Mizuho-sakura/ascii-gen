@@ -1,0 +1,139 @@
+<!--
+╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║ █████╗    █████╗  ██████╗  ██████║  ██████║       ██████╗  ██████╗  ███╗   ██╗ ██████╗  ██████╗  █████╗   ████████╗  █████╗  ██████╗       ██╗   ██╗ █████╗   ║
+║ ██╔══██╗ ██╔═══╝░ ██╔═══╝░  ░██║░░░  ░██║░░░      ██╔═══╝░ ██╔═══╝░ ████╗  ██║░██╔═══╝░ ██╔══██╗ ██╔══██╗ ╚══██╔══╝░██╔══██╗ ██╔══██╗      ██║░  ██║░╚══██║░  ║
+║ ███████║░ █████╗░ ██║░░░░░   ██║░     ██║░        ██║░███╗ █████╗░░ ██╔██╗ ██║░█████╗░░ ██████╔╝░███████║░ ░░██║░░░░██║░░██║░██████╔╝░     ██║░  ██║░ ███╔╝░  ║
+║ ██╔══██║░╚════██╗ ██║░       ██║░     ██║░        ██║░ ██║░██╔══╝░  ██║╚██╗██║░██╔══╝░  ██╔═██╗░░██╔══██║░   ██║░   ██║░ ██║░██╔═██╗░░     ╚██╗ ██╔╝░██╔═╝░░  ║
+║ ██║░░██║░█████╔╝░░██████╗  ██████║  ██████║       ██████╔╝░██████╗  ██║░╚████║░██████╗  ██║░░██╗ ██║░░██║░   ██║░    █████╔╝░██║░░██╗       ╚████╔╝░░██████   ║
+║  ░░░  ░░░ ░░░░░░░  ░░░░░░░  ░░░░░░░  ░░░░░░░       ░░░░░░░░ ░░░░░░░  ░░░ ░░░░░░ ░░░░░░░  ░░░  ░░░ ░░░  ░░░    ░░░     ░░░░░░░ ░░░  ░░░       ░░░░░░░  ░░░░░░  ║
+║ ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════ ║
+╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+©2026 Mizuho & Altiva Lab
+-->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web上でASCIIアート風文字を作成できるサイトです。">
+    <title>ASCII Art Logo Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/favicon.ico">
+</head>
+<body>
+    <!-- 追加：ローディング画面 -->
+    <div id="loading-overlay">
+        <div class="loader"></div>
+    </div>
+
+    <div class="app-container">
+    <header>
+        <div class="brand">
+            <h1>ASCII LOGO GEN <span class="version">v2.0</span></h1>
+        </div>
+        <div class="header-controls">
+            <button id="btn-open-catalog" class="header-btn">
+                <span class="icon">Aa</span> フォントプレビュー
+            </button>
+
+            <a href="about.html" class="header-btn secondary-btn">
+                <span class="icon">?</span> このサイトについて
+            </a>
+        </div>
+    </header>
+
+    <div id="catalog-modal" class="modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-window">
+            <div class="modal-header">
+                <h3>利用可能なフォント 一覧</h3>
+                <button id="btn-close-catalog" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-content">
+                <div id="catalog-grid" class="catalog-grid"></div>
+            </div>
+        </div>
+    </div>
+        <main class="workspace">
+            
+            <aside class="sidebar">
+                <div class="control-group">
+                    <label for="input-text">テキスト入力</label>
+                    <input type="text" id="input-text" value="ASCII Generator" placeholder="Type here..." autocomplete="off">
+                </div>
+
+                <div class="control-group">
+                    <label for="select-font">フォントを選択</label>
+                    <select id="select-font"></select>
+                </div>
+
+                <div class="control-group">
+                    <label>配置</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="align" value="left" checked>
+                            <span>左寄せ</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="align" value="center">
+                            <span>中央寄せ</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>装飾</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="chk-shadow">
+                            <span>文字の影</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="chk-border">
+                            <span>フレーム</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="chk-line" checked>
+                            <span>下線</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>操作</label>
+                    <div class="button-group">
+                        <button id="btn-copy" class="btn primary">コピー</button>
+                        <button id="btn-save" class="btn secondary">保存</button>
+                        <button id="btn-reset" class="btn danger">リセット</button>
+                    </div>
+                </div>
+
+                <div class="control-group history-group">
+                    <label>履歴</label>
+                    <ul id="history-list">
+                        </ul>
+                </div>
+            </aside>
+
+            <section class="preview-area">
+                <div class="canvas-container">
+                    <pre id="ascii-output"></pre>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script type="module" src="Scripts/main.js"></script>
+    <script>
+    window.addEventListener("load", () => {
+    const overlay = document.getElementById("loading-overlay");
+    if (!overlay) return;
+
+    overlay.classList.add("hidden");
+    
+    setTimeout(() => {
+        overlay.remove();
+    }, 350);
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/favicon.ico">
+    <title>About - ASCII LOGO GEN</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --bg-alt: #fcfcfc;
+            --text: #333333;
+            --text-muted: #666666;
+            --accent: #0066ff;
+            --border: #eeeeee;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            margin: 0;
+            background: var(--bg);
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        header {
+            margin-bottom: 60px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        .nav-back {
+            text-decoration: none;
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        h1 { font-size: 1.8rem; margin: 20px 0 10px; }
+        h2 { font-size: 1.3rem; margin: 40px 0 20px; padding-left: 10px; border-left: 4px solid var(--accent); }
+        h3 { font-size: 1.1rem; margin-top: 30px; }
+
+        p { margin-bottom: 1.5rem; }
+
+        /* スクリーンショット用プレースホルダー */
+        .screenshot {
+            background: #f0f0f0;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            width: 100%;
+            height: auto;
+            margin: 20px 0;
+            display: block;
+        }
+
+        .instruction-step {
+            margin-bottom: 40px;
+        }
+
+        .instruction-step b {
+            display: inline-block;
+            background: var(--text);
+            color: #fff;
+            padding: 0 8px;
+            border-radius: 4px;
+            margin-right: 8px;
+        }
+
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+
+        footer {
+            margin-top: 80px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .social-link:hover {
+            border-color: #1DA1F2; 
+            color: #1DA1F2;
+            background: #f0f9ff;
+        }
+
+        .social-icon {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <a href="index.html" class="nav-back">アプリに戻る</a>
+            <h1>ASCII LOGO GEN について</h1>
+            <p>入力したテキストをアスキーアート形式のロゴに変換するツールです。</p>
+        </header>
+
+        <section>
+            <h2>概要</h2>
+            <p>
+                このツールは、複数の行で構成された特殊なフォントデータ（アスキーフォント）を使用して、入力文字列を変換します。
+                プログラムのヘッダーコメントや、ターミナルの表示用ログなどに利用することを目的としています。
+            </p>
+            <img src="assets/screenshot.png" alt="メイン画面のスクリーンショット" class="screenshot">
+        </section>
+
+        <section>
+            <h2>取扱説明</h2>
+            
+            <div class="instruction-step">
+                <h3><b>1</b> テキストの入力</h3>
+                <p>サイドバー上部の「テキストを入力」欄に文字を入力します。リアルタイムでプレビューが更新されます。</p>
+            </div>
+
+            <div class="instruction-step">
+                <h3><b>2</b> フォントの選択</h3>
+                <p>
+                    「フォントを選択」プルダウン、またはヘッダーの「FONT LIBRARY」からフォントを切り替えることができます。
+                    現在、5行構成および8行構成の複数のバリエーションが利用可能です。
+                </p>
+                <img src="assets/font-library_screenshot.png" alt="フォントライブラリのスクリーンショット" class="screenshot">
+            </div>
+
+            <div class="instruction-step">
+                <h3><b>3</b> 結果のコピー</h3>
+                <p>生成されたロゴをクリック、または「COPY」ボタンを押すことでクリップボードにコピーできます。</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>仕様・制限</h2>
+            <ul>
+                <li><strong>対応文字:</strong> 基本的に英数字の大文字に対応しています（フォントにより異なります）。</li>
+                <li><strong>レスポンシブ:</strong> モバイル端末での閲覧・操作も可能ですが、大きなロゴは画面からはみ出す場合があります。</li>
+            </ul>
+        </section>
+
+        <section>
+                <section>
+                    <h2>作成者</h2>
+                    <p>
+                        <strong>みずほ / Mizuho</strong><br>
+                        このツールの設計・開発および、一部フォントデータのデザインを担当。
+                    </p>
+
+                    <div class="social-links">
+                        <a href="https://twitter.com/@sakura_mizuho5" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <svg class="social-icon" viewBox="0 0 24 24">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+                        </svg>
+                        Twitter (@sakura_mizuho5)
+                    </a>
+                </div>
+            </section>
+        </section>
+
+        <footer>
+            &copy; 2024 ASCII LOGO GEN by Mizuho.
+        </footer>
+    </div>
+
+</body>
+</html>
